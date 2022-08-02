@@ -7,7 +7,7 @@ import "bootstrap/dist/css/bootstrap.css";
 import "bootstrap-vue/dist/bootstrap-vue.css";
 
 Vue.use(BootstrapVue);
-import { Model } from "vue-api-query";
+
 
 Vue.config.productionTip = false
 
