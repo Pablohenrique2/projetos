@@ -1,22 +1,17 @@
-import { createApp } from 'vue'
+import Vue from 'vue'
 import App from './App.vue'
-<<<<<<< HEAD
 import router from './router'
+import { BootstrapVue } from "bootstrap-vue";
+import"./plugins/axios"
+import "bootstrap/dist/css/bootstrap.css";
+import "bootstrap-vue/dist/bootstrap-vue.css";
 
-createApp(App).use(router).mount('#app')
-=======
-import VueRouter from 'vue-router'
+Vue.use(BootstrapVue);
+import { Model } from "vue-api-query";
 
-createApp(App).mount('#app')
+Vue.config.productionTip = false
 
-Vue.use(VueRouter)
-
-const routes = [
-    { path: '/login', component: login },
-    { path: '/home', component: home },
-  ]
-  const router = VueRouter.createRouter({
-    history: VueRouter.createWebHashHistory(),
-    routes, 
-  })
->>>>>>> fec294bd1dbc9a5851e7e3ed7efd8981d71c1663
+new Vue({
+  router,
+  render: h => h(App)
+}).$mount('#app')
