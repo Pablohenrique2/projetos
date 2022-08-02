@@ -4,43 +4,50 @@
     <b-button v-b-modal.modal-1>Adicionar livros</b-button>
 
     <b-modal id="modal-1" title="BootstrapVue">
-      <div class="row">
-        <div class="col-12 mt-3">
-          <b-form-input v-model="nome" placeholder="nome"></b-form-input>
-        </div>
-        <div class="col-12 mt-3">
-          <b-form-input
-            v-model="categoria"
-            placeholder="categoria"
-          ></b-form-input>
-        </div>
-        <div class="col-12 mt-3">
-          <b-form-input v-model="codigo" placeholder="codigo"></b-form-input>
-        </div>
-        <div class="col-12 mt-3">
-          <b-form-input v-model="autor" placeholder="autor"></b-form-input>
-        </div>
-        <div class="col-12 mt-3">
-          <b-form-input v-model="ebook" placeholder="ebook"></b-form-input>
-        </div>
-        <div class="col-12 mt-3">
-          <b-form-input
-            v-model="tamanhoDoArquivo"
-            placeholder="tamanhoDoArquivo"
-          ></b-form-input>
-        </div>
-        <div class="col-12 mt-3">
-          <b-form-input v-model="peso" placeholder="peso"></b-form-input>
-        </div>
-        <div class="col-12 mt-3">
-          <b-form-input v-model="pessoa" placeholder="seu id"></b-form-input>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-12 mt-3">
-          <button @click="addebook" class="btn btn-success btn-block">
-            Salvar
-          </button>
+      <div>
+        <div>
+          <div class="row">
+            <div class="col-12 mt-3">
+              <b-form-input v-model="nome" placeholder="nome"></b-form-input>
+            </div>
+            <div class="col-12 mt-3">
+              <b-form-input
+                v-model="categoria"
+                placeholder="categoria"
+              ></b-form-input>
+            </div>
+            <div class="col-12 mt-3">
+              <b-form-input
+                v-model="codigo"
+                placeholder="codigo"
+              ></b-form-input>
+            </div>
+            <div class="col-12 mt-3">
+              <b-form-input v-model="autor" placeholder="autor"></b-form-input>
+            </div>
+            <div class="col-12 mt-3">
+              <b-form-input v-model="ebook" placeholder="ebook"></b-form-input>
+            </div>
+            <div class="col-12 mt-3">
+              <b-form-input
+                v-model="tamanhoDoArquivo"
+                placeholder="tamanhoDoArquivo"
+              ></b-form-input>
+            </div>
+            <div class="col-12 mt-3">
+              <b-form-input v-model="peso" placeholder="peso"></b-form-input>
+            </div>
+            <div class="col-12 mt-3">
+              <b-form-input v-model="index" placeholder="index"></b-form-input>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-12 mt-3">
+              <button @click="addebook" class="btn btn-success btn-block">
+                Salvar
+              </button>
+            </div>
+          </div>
         </div>
       </div>
     </b-modal>
@@ -56,6 +63,7 @@
           <th scope="col">tamanho do Arquivo</th>
           <th scope="col">peso</th>
           <th scope="col">id pessoa</th>
+          <th scope="col">Ações</th>
         </tr>
       </thead>
       <tbody>
@@ -68,7 +76,7 @@
           <td>{{ ebook.ebook }}</td>
           <td>{{ ebook.tamanhoDoArquivo }}</td>
           <td>{{ ebook.peso }}</td>
-          <td>{{ ebook.pessoa }}</td>
+          <td>{{ ebook.pessoa_id }}</td>
           <router-link :to="{ name: 'edit', params: { book: ebook.id } }">
             <button type="button" class="btn btn-outline-primary">
               editar
@@ -91,7 +99,7 @@ export default {
       ebook: '',
       tamanhoDoArquivo: '',
       peso: '',
-      pessoa: '',
+      index: '',
     };
   },
   methods: {
@@ -105,7 +113,7 @@ export default {
         ebook: this.ebook,
         tamanhoDoArquivo: this.tamanhoDoArquivo,
         peso: this.peso,
-        pessoa: this.pessoa,
+        index: this.index,
       };
       this.$http.post('/adicionar', data).then(response => {
         console.log(response);
@@ -118,7 +126,7 @@ export default {
       this.ebook = '';
       this.tamanhoDoArquivo = '';
       this.peso = '';
-      this.pessoa = '';
+      this.index = '';
     },
     getListagem() {
       this.$http.get('lista').then(response => {
@@ -128,6 +136,14 @@ export default {
   },
   created() {
     this.getListagem();
+  },
+  mounted() {
+    if (localStorage.activeUser) {
+      let lsUsers = localStorage.users;
+      this.users = JSON.parse(lsUsers);
+      let activeUser = localStorage.activeUser;
+      this.user = JSON.parse(activeUser);
+    }
   },
 };
 </script>

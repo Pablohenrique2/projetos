@@ -6,6 +6,7 @@ import Register from '../components/Register.vue';
 import Login from '../components/Login.vue';
 import Edit from '../views/Edit.vue';
 import Perfil from '../views/Perfil.vue';
+import Book from '../views/Book.vue';
 
 Vue.use(VueRouter);
 function guest(to, from, next) {
@@ -57,6 +58,12 @@ const routes = [
     name: 'Perfil',
     component: Perfil,
     beforeEnter: guard,
+  },
+  ,
+  {
+    path: '/livros',
+    name: 'Book',
+    component: Book,
   },
 ];
 

@@ -7,7 +7,7 @@
 
       <b-collapse id="nav-collapse" is-nav>
         <b-navbar-nav>
-          <b-nav-item to="#">livros</b-nav-item>
+          <b-nav-item to="/livros">livros</b-nav-item>
           <b-nav-item to="/admin">admin</b-nav-item>
         </b-navbar-nav>
 
@@ -33,7 +33,7 @@
             <b-dropdown-item v-if="!user" to="/register"
               >register</b-dropdown-item
             >
-            <b-dropdown-item to="/perfil">Perfil</b-dropdown-item>
+            <b-dropdown-item v-if="user" to="/perfil">Perfil</b-dropdown-item>
             <b-dropdown-item v-if="user" @click.prevent="logout"
               >Sair</b-dropdown-item
             >

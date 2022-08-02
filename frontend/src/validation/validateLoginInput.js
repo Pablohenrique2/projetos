@@ -6,11 +6,11 @@ const validateRegisterInput = data => {
   const { username, password } = data;
 
   if (validator.isEmpty(username)) {
-    errors.username = 'Username field is required.';
+    errors.username = 'O campo Nome de usuário é obrigatório.';
   }
 
   if (validator.isEmpty(password)) {
-    errors.password = 'Password field is required.';
+    errors.password = 'O campo Senha é obrigatório.';
   }
 
   return {

@@ -21,7 +21,7 @@ class ebooksController extends Controller
         $newEbooks->autor = $request->autor;
         $newEbooks->ebook = $request->ebook;
         $newEbooks->tamanhoDoArquivo = $request->tamanhoDoArquivo;
-        $newEbooks->pessoa_id = $request->pessoa;
+        $newEbooks->pessoa_id = $request->index;
         $newEbooks->peso = $request->peso;
         $newEbooks->save();
         return response()->json('success');
@@ -41,6 +41,7 @@ class ebooksController extends Controller
         $id->autor = $request->autor;
         $id->ebook = $request->ebook;
         $id->tamanhoDoArquivo = $request->tamanhoDoArquivo;
+        $id->pessoa_id = $request->pessoa_id;
         $id->peso = $request->peso;
         $id->save();
         return response()->json('success');

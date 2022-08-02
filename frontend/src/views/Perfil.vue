@@ -7,6 +7,9 @@
       <div v-if="user.username == item.username">
         <div class="row">
           <div class="col-12 mt-3">
+            <b-form-input v-model="index" placeholder="index"></b-form-input>
+          </div>
+          <div class="col-12 mt-3">
             <b-form-input v-model="nome" placeholder="nome"></b-form-input>
           </div>
           <div class="col-12 mt-3">
@@ -43,6 +46,7 @@ export default {
       nome: '',
       dataDeNascimento: '',
       sexo: '',
+      index: '',
     };
   },
   methods: {
@@ -51,6 +55,7 @@ export default {
         nome: this.nome,
         dataDeNascimento: this.dataDeNascimento,
         sexo: this.sexo,
+        index: this.index,
       };
       this.$http.post('/add', data).then(response => {
         console.log(response);
@@ -59,6 +64,7 @@ export default {
       this.nome = '';
       this.dataDeNascimento = '';
       this.sexo = '';
+      this.index = '';
     },
   },
   mounted() {
