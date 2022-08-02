@@ -21,6 +21,7 @@ class ebooksController extends Controller
         $newEbooks->autor = $request->autor;
         $newEbooks->ebook = $request->ebook;
         $newEbooks->tamanhoDoArquivo = $request->tamanhoDoArquivo;
+        $newEbooks->pessoa_id = $request->pessoa;
         $newEbooks->peso = $request->peso;
         $newEbooks->save();
         return response()->json('success');

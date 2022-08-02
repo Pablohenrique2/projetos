@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ebooksController;
+use App\Http\Controllers\pessoaController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -23,3 +24,4 @@ Route::post('/adicionar',[ebooksController::class,'adicionar']);
 Route::get('/editar/{id}',[ebooksController::class,'editar']);
 Route::put('/update/{id}',[ebooksController::class,'update']);
 Route::delete('/delete/{id}',[ebooksController::class,'delete']);
+Route::post('/add',[pessoaController::class,'adicionar']);
